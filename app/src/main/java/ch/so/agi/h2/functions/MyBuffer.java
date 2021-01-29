@@ -3,6 +3,7 @@ package ch.so.agi.h2.functions;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.locationtech.jts.algorithm.MinimumDiameter;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.LinearRing;
@@ -63,6 +64,12 @@ public class MyBuffer {
         List<LinearRing> holes = new ArrayList<>();
         for (int j = 0; j < polygon.getNumInteriorRing(); j++) {
             LinearRing ring = (LinearRing) polygon.getInteriorRingN(j);
+            
+//            MinimumDiameter md = new MinimumDiameter(polygon);
+//            System.out.println(md.getLength());
+//            System.out.println(md.getDiameter());
+//            System.out.println(md.getSupportingSegment());
+            
             if (ring.getFactory().createPolygon(ring).getArea() >= tolerance) {
                 holes.add(ring);
             } else {

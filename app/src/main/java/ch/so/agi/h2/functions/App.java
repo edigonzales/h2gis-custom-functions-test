@@ -34,8 +34,7 @@ public class App {
             
 
             
-            s.executeUpdate("UPDATE BAUZONENGRENZEN_BAUZONENGRENZE SET geometrie = SOGIS_RemoveInnerRings(GEOMETRIE, 1.0)"
-                    + " WHERE T_ID = 3");
+            s.executeUpdate("UPDATE BAUZONENGRENZEN_BAUZONENGRENZE SET geometrie = SOGIS_RemoveInnerRings(GEOMETRIE, 1.0)");
 
            
         } catch (SQLException e) {
@@ -48,11 +47,11 @@ public class App {
         settings.setModels("SO_ARP_Bauzonengrenzen_20210120");
         settings.setModeldir(Paths.get("src/main/resources/").toFile().getAbsolutePath()+";"+"http://models.geo.admin.ch");
         settings.setDbfile(dbfile);
-        settings.setValidation(false);
+        settings.setValidation(true);
         settings.setItfTransferfile(false);
         settings.setDburl(dburl);
         
-        String xtfFileName = "/Users/stefan/tmp/fubar.xtf";
+        String xtfFileName = "/Users/stefan/tmp/bauzonengrenzen_2021-01-29.xtf";
         settings.setXtffile(xtfFileName);
         Ili2db.run(settings, null);
 
